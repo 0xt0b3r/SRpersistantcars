@@ -1,9 +1,8 @@
 
 Citizen.CreateThread(function()
 	while Config.entercar do
-	Wait(800)	
+	Wait(80)	
 		local playerped = GetPlayerPed(-1)
-				print"carcheck1"
 	if	IsPedGettingIntoAVehicle(playerped) then 
 		Wait(Config.updatetime)
 			if IsPedSittingInAnyVehicle(playerped) then 
@@ -21,8 +20,7 @@ Citizen.CreateThread(function()
 end)
 Citizen.CreateThread(function()
 	while Config.timedupdate do 
-		Wait(Config.Checktime*1000)	
-		print"carcheck"	
+		Wait(Config.Checktime*1000)		
 		local playerped = GetPlayerPed(-1)
 		if IsPedSittingInAnyVehicle(playerped) then 
 			local newcar =	GetVehiclePedIsIn(playerped,false)
@@ -39,7 +37,7 @@ RegisterNetEvent('persist:carsync')
 AddEventHandler('persist:carsync', function(newcar)
 car = NetworkGetEntityFromNetworkId(newcar)
 			  SetEntityAsMissionEntity(car, 1, 1)
-		  print"CarSyncd"
-		  print(newcar)
+		--  print"CarSyncd"
+		--  print(newcar)
 		end)
 		
